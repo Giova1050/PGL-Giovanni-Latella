@@ -11,6 +11,8 @@ export const DARKTHEME = {
     grisclaro: "#bbab94",
     gris: "#827261",
     grisoscuro: "#524034",
-    negro: "#110906"
+    negro: "#110906",
+    dorado: "#baad47",
+    rojo: "#ae1515"
 
 }
