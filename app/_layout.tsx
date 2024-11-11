@@ -1,24 +1,15 @@
-import { ImageBackground, ImageSourcePropType, StyleSheet, Text, View } from 'react-native'
+import { Stack } from 'expo-router'
+import {  StyleSheet, View } from 'react-native'
 import React from 'react'
-
-export type WelcomeProps = {
-    info: string;
-    img: ImageSourcePropType;
-}
-
 
 const _layout = () => {
   return (
-    <View style={styles.container}>
-        
-    </View>
+    <Stack>
+        <Stack.Screen name="home" component={homeScreen}/>
+    </Stack>
   )
 }
 
 export default _layout
 
-const styles = StyleSheet.create({
-    container: {
-        flex: 1
-    }
-})
+const styles = StyleSheet.create({})

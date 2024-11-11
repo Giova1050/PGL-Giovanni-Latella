@@ -1,12 +1,21 @@
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { Link } from "expo-router";
+import { ImageSourcePropType, StyleSheet, Text, View, Image } from 'react-native';
 
-export default function App() {
+
+export type WelcomeProps = {
+  info: string;
+  img: ImageSourcePropType;
+}
+
+export default function App({info, img}: WelcomeProps) {
   return (
     <View style={styles.container}>
       <StatusBar style="auto" />
-      <Text>Open up App.tsx to start working on your app!</Text>
+      <Image style={styles.avatar} source={img}/>
+        <Text>{info}</Text>
+        <Link href="./profile">Entrar al portfolio</Link>
     </View>
   );
 }
@@ -14,8 +23,10 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+  },
+  avatar: {
+    height: 90,
+    width: 90,
+    borderRadius: 100
   },
 });

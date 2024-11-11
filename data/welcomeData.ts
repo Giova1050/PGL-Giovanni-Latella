@@ -1,4 +1,5 @@
-import { WelcomeProps } from "../app/_layout";
+import { WelcomeProps } from "../app";
+
 
 
 export const cards: WelcomeProps[] = [
