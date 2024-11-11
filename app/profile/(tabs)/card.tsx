@@ -6,15 +6,8 @@ import { LIGHTTHEME } from "../../../styles/colors";
 
 const card = () => {
   return (
-    <View style={styles.cardContainer}>
-      <View style={styles.card}>
-        <Text style={styles.textStyle}>Descripción sobre mí!</Text>
-        <Text>
-          Soy Giovanni, un chico pensador que le gustar conmigo mismo y me gusta
-          la programacion aunque me cueste y lo intento entender porque me
-          gusta.
-        </Text>
-      </View>
+ 
+
 
       <FlatList
         data={scrolls}
@@ -23,7 +16,6 @@ const card = () => {
         )}
         keyExtractor={(item, index) => `${index}-${item.title}`}
       />
-    </View>
   );
 };
 

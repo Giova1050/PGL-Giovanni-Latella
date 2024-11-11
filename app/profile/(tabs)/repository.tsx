@@ -1,13 +1,13 @@
 import { StyleSheet, Text, View } from "react-native";
 import React from "react";
-import QRCode from 'react-native-qrcode-svg';
+
 
 
 
 const RepositoryPage = () => {
   return (
     <View>
-      <QRCode value="https://www.youtube.com/" />
+
     </View>
   );
 };
