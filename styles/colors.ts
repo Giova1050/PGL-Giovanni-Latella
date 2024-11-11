@@ -3,7 +3,8 @@ export const LIGHTTHEME = {
     amarillo: "#ffd700",
     azulclaro: "#1a65a9",
     azulmarino: "#234e98",
-    verde: "#0f9f52"
+    verde: "#0f9f52",
+    plateado: "#dfe0e4"
 }
 
 export const DARKTHEME = {
