@@ -5,7 +5,7 @@ import React from 'react'
 const _layout = () => {
   return (
     <Stack>
-        <Stack.Screen name="home" component={homeScreen}/>
+        <Stack.Screen name="(tabs)"/>
     </Stack>
   )
 }
