@@ -6,9 +6,6 @@ import { LIGHTTHEME } from "../../../styles/colors";
 
 const card = () => {
   return (
- 
-
-
       <FlatList
         data={scrolls}
         renderItem={({ item }) => (
@@ -18,7 +15,6 @@ const card = () => {
       />
   );
 };
-
 export default card;
 
 const styles = StyleSheet.create({

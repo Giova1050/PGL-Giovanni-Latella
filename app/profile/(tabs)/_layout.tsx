@@ -25,6 +25,7 @@ const TabsLayout = () => {
           name="cards"
           options={{
             title: "Cards",
+            href: "app/profile/(tabs)/card.tsx",
             tabBarIcon: () => <Entypo name="list" />,
           }}
         />
@@ -32,6 +33,7 @@ const TabsLayout = () => {
           name="repository"
           options={{
             title: "Repository",
+            href: "app/profile/(tabs)/repository.tsx",
             tabBarIcon: () => <Entypo name="github" />,
           }}
         />
