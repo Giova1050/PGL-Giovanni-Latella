@@ -1,11 +1,6 @@
 import React from "react";
 import { Link } from "expo-router";
-import {
-  StyleSheet,
-  Text,
-  View,
-  Image,
-} from "react-native";
+import { StyleSheet, Text, View, Image } from "react-native";
 import { LIGHTTHEME } from "../styles/colors";
 
 export default function App() {
@@ -18,7 +13,7 @@ export default function App() {
       <Text style={styles.welcomeText}>
         Bienvenido a mi portfolio Aquí puedes ver la información sobre mi
       </Text>
-      <Link href="./profile" style={styles.button}>
+      <Link href="/profile" style={styles.button}>
         Entrar al portfolio
       </Link>
       <Image
@@ -46,15 +41,14 @@ const styles = StyleSheet.create({
     flex: 1,
     width: 125,
     height: 125,
-    resizeMode: 'contain'
-    
+    resizeMode: "contain",
   },
   statusBar: {
     backgroundColor: LIGHTTHEME.plateado,
   },
   button: {
     alignSelf: "center",
-    textAlign: 'center',
+    textAlign: "center",
     backgroundColor: LIGHTTHEME.verde,
     padding: 5,
     width: 150,
@@ -62,12 +56,12 @@ const styles = StyleSheet.create({
     margin: 20,
   },
   welcomeText: {
-    textAlign: 'center',
+    textAlign: "center",
     fontSize: 16,
     backgroundColor: LIGHTTHEME.amarillo,
     borderRadius: 4,
     borderWidth: 0.5,
     padding: 25,
     margin: 20,
-  }
+  },
 });

@@ -1,10 +1,10 @@
 import { FlatList, StyleSheet, Text, View, Image } from "react-native";
 import React from "react";
-import { scrolls } from "../../data/Scrolls";
+import { scrolls } from "../../data/scrolls";
 import Scroll, { ScrollProps } from "../../components/Card";
 import { LIGHTTHEME } from "../../styles/colors";
 
-const card = () => {
+const CardPage = () => {
   return (
     <FlatList
       data={scrolls}
@@ -15,7 +15,7 @@ const card = () => {
     />
   );
 };
-export default card;
+export default CardPage;
 
 const styles = StyleSheet.create({
   cardContainer: {

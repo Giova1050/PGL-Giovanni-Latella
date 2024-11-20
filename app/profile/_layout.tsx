@@ -4,45 +4,44 @@ import { Tabs } from "expo-router";
 import Entypo from "@expo/vector-icons/Entypo";
 import { LIGHTTHEME } from "../../styles/colors";
 
-const TabsLayout = () => {
+const ProfileLayout = () => {
   return (
-    <>
-      <View style={styles.card}>
-        <Text style={styles.textStyle}>Descripción sobre mí!</Text>
-        <Text>
-          Soy Giovanni, un chico pensador que le gustar conmigo mismo y me gusta
-          la programacion aunque me cueste y lo intento entender porque me
-          gusta.
-        </Text>
-      </View>
-      <Tabs
-        screenOptions={{
-          tabBarActiveTintColor: LIGHTTHEME.verde,
-          header: () => <Text></Text>,
+    <Tabs
+      screenOptions={{
+        tabBarActiveTintColor: LIGHTTHEME.verde,
+        header: () => (
+          <View style={styles.card}>
+            <Text style={styles.textStyle}>Descripción sobre mí!</Text>
+            <Text>
+              Soy Giovanni, un chico pensador que le gustar conmigo mismo y me
+              gusta la programacion aunque me cueste y lo intento entender
+              porque me gusta.
+            </Text>
+          </View>
+        ),
+      }}
+    >
+      <Tabs.Screen
+        name="cards"
+        options={{
+          title: "Cards",
+          href: "/profile/card",
+          tabBarIcon: () => <Entypo name="list" />,
         }}
-      >
-        <Tabs.Screen
-          name="cards"
-          options={{
-            title: "Cards",
-            href: "app/profile/card.tsx",
-            tabBarIcon: () => <Entypo name="list" />,
-          }}
-        />
-        <Tabs.Screen
-          name="repository"
-          options={{
-            title: "Repository",
-            href: "app/profile/repository.tsx",
-            tabBarIcon: () => <Entypo name="github" />,
-          }}
-        />
-      </Tabs>
-    </>
+      />
+      <Tabs.Screen
+        name="repository"
+        options={{
+          title: "Repository",
+          href: "/profile/repository",
+          tabBarIcon: () => <Entypo name="github" />,
+        }}
+      />
+    </Tabs>
   );
 };
 
-export default TabsLayout;
+export default ProfileLayout;
 
 const styles = StyleSheet.create({
   textStyle: {

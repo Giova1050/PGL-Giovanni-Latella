@@ -1,15 +1,11 @@
-import { Stack } from 'expo-router'
-import {  StyleSheet, View } from 'react-native'
-import React from 'react'
+import { StyleSheet, View } from "react-native";
+import React from "react";
+import { Slot } from "expo-router";
 
-const _layout = () => {
-  return (
-    <Stack>
-        <Stack.Screen name="profile"/>
-    </Stack>
-  )
-}
+const AppLayout = () => {
+  return <Slot />;
+};
 
-export default _layout
+export default AppLayout;
 
-const styles = StyleSheet.create({})
+const styles = StyleSheet.create({});
