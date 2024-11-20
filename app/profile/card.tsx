@@ -1,18 +1,18 @@
 import { FlatList, StyleSheet, Text, View, Image } from "react-native";
 import React from "react";
-import { scrolls } from "../../../data/Scrolls";
-import Scroll, { ScrollProps } from "../../../components/Card";
-import { LIGHTTHEME } from "../../../styles/colors";
+import { scrolls } from "../../data/Scrolls";
+import Scroll, { ScrollProps } from "../../components/Card";
+import { LIGHTTHEME } from "../../styles/colors";
 
 const card = () => {
   return (
-      <FlatList
-        data={scrolls}
-        renderItem={({ item }) => (
-          <Scroll title={item.title} imgSource={item.imgSource} />
-        )}
-        keyExtractor={(item, index) => `${index}-${item.title}`}
-      />
+    <FlatList
+      data={scrolls}
+      renderItem={({ item }) => (
+        <Scroll title={item.title} imgSource={item.imgSource} />
+      )}
+      keyExtractor={(item, index) => `${index}-${item.title}`}
+    />
   );
 };
 export default card;
@@ -20,7 +20,7 @@ export default card;
 const styles = StyleSheet.create({
   cardContainer: {
     marginBottom: 18,
-    backgroundColor: LIGHTTHEME.azulmarino
+    backgroundColor: LIGHTTHEME.azulmarino,
   },
   card: {
     margin: 10,

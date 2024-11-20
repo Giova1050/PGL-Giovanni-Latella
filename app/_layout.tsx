@@ -5,7 +5,7 @@ import React from 'react'
 const _layout = () => {
   return (
     <Stack>
-        <Stack.Screen name="(tabs)"/>
+        <Stack.Screen name="profile"/>
     </Stack>
   )
 }

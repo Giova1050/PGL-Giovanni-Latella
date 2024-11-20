@@ -2,7 +2,7 @@ import { StyleSheet, Text, View, Image } from "react-native";
 import React from "react";
 import { Tabs } from "expo-router";
 import Entypo from "@expo/vector-icons/Entypo";
-import { LIGHTTHEME } from "../../../styles/colors";
+import { LIGHTTHEME } from "../../styles/colors";
 
 const TabsLayout = () => {
   return (
@@ -18,14 +18,14 @@ const TabsLayout = () => {
       <Tabs
         screenOptions={{
           tabBarActiveTintColor: LIGHTTHEME.verde,
-          header: () => <Text></Text>
+          header: () => <Text></Text>,
         }}
       >
         <Tabs.Screen
           name="cards"
           options={{
             title: "Cards",
-            href: "app/profile/(tabs)/card.tsx",
+            href: "app/profile/card.tsx",
             tabBarIcon: () => <Entypo name="list" />,
           }}
         />
@@ -33,7 +33,7 @@ const TabsLayout = () => {
           name="repository"
           options={{
             title: "Repository",
-            href: "app/profile/(tabs)/repository.tsx",
+            href: "app/profile/repository.tsx",
             tabBarIcon: () => <Entypo name="github" />,
           }}
         />
@@ -61,5 +61,5 @@ const styles = StyleSheet.create({
     height: 90,
     width: 90,
     borderRadius: 100,
-  }
+  },
 });

@@ -6,7 +6,6 @@ const RepositoryPage = () => {
   return (
     <View>
       <QRCode value="https://github.com/Giova1050" />
-      <Text>Aqui va el qrcode</Text>
     </View>
   );
 };
