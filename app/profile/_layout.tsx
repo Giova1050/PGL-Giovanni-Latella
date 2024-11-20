@@ -22,7 +22,7 @@ const ProfileLayout = () => {
       }}
     >
       <Tabs.Screen
-        name="cards"
+        name="card"
         options={{
           title: "Cards",
           href: "/profile/card",
