@@ -16,7 +16,7 @@ const WelcomePage = () => {
       <Link href="/profile" style={styles.button1}>
         Entrar al portfolio
       </Link>
-      <Link href="/profile" style={styles.button2}>
+      <Link href="" style={styles.button2}>
         Entrar a la lista de compras 
       </Link>
       <Image
@@ -61,9 +61,10 @@ const styles = StyleSheet.create({
     margin: 20,
   },
   button2: {
+    fontSize: 11,
     alignSelf: "center",
     textAlign: "center",
-    backgroundColor: LIGHTTHEME.verde,
+    backgroundColor: LIGHTTHEME.rosado,
     padding: 5,
     width: 150,
     height: 30,
