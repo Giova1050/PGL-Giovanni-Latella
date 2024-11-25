@@ -4,7 +4,8 @@ export const LIGHTTHEME = {
     azulclaro: "#1a65a9",
     azulmarino: "#234e98",
     verde: "#0f9f52",
-    plateado: "#dfe0e4"
+    plateado: "#dfe0e4",
+    rosado: "#ed5f89"
 }
 
 export const DARKTHEME = {
@@ -15,5 +16,15 @@ export const DARKTHEME = {
     negro: "#110906",
     dorado: "#baad47",
     rojo: "#ae1515"
+
+}
+
+export const SPARKLETHEME = {
+    rosado: "#ed5f89",
+    gris: "#dfe0e4",
+    negro: "#343138",
+    beige: "#e1c7b6",
+    rojo: "#e73362",
+    blanco: "#ffffff"
 
 }
