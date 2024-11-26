@@ -16,7 +16,7 @@ const WelcomePage = () => {
       <Link href="/profile" style={styles.button1}>
         Entrar al portfolio
       </Link>
-      <Link href="" style={styles.button2}>
+      <Link href="/shoppingList" style={styles.button2}>
         Entrar a la lista de compras 
       </Link>
       <Image
