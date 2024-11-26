@@ -10,16 +10,8 @@ import React from "react";
 import { v4 as uuidv4 } from "uuid";
 import { SPARKLETHEME } from "../styles/colors";
 
-type propsProduct = {
-  id: typeof uuidv4;
-  name: "";
-  category: "";
-  amount: 0;
-  price: 0;
-  checked: false;
-};
-
 export const CardItems = () => {
+
   return (
     <ScrollView style={styles.list}>
       <View style={styles.item}>
