@@ -3,24 +3,50 @@ import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
 import { SPARKLETHEME } from "../../styles/colors";
 import CardItems from "../../components/CardItems";
 
-
 const shoppingListScreen = () => {
 
-  const Categories = ["Panaderia", "Bebidas", "Enlatados", "Carnes", "Pescados", "Frutas/Verduras", "Otros"];
+  const Categories = [
+    "Panaderia",
+    "Bebidas",
+    "Enlatados",
+    "Carnes",
+    "Pescados",
+    "Frutas/Verduras",
+    "Otros",
+  ];
 
   const [items, setItems] = useState([
-    { id: 1, name: 'Pan', category: 'Panaderia', amount: 2, price: 1, checked: false },
-    { id: 2, name: 'Pepsi', category: 'Bebidas', amount: 1, price: 2, checked: false },
+    {
+      id: 1,
+      name: "Pan",
+      category: "Panaderia",
+      amount: 2,
+      price: 1,
+      checked: false,
+    },
+    {
+      id: 2,
+      name: "Pepsi",
+      category: "Bebidas",
+      amount: 1,
+      price: 2,
+      checked: false,
+    },
   ]);
 
-  const [newItem, setNewItem] = useState({
-    name: '',
-    category: '', 
-    amount: '',
-    price: '',
-  });
-
-
+  const handleAddItem = (newItem: { name: string; category: string; quantity: number; price: number; }) => {
+    setItems([
+      ...items, 
+      {
+        id: items.length + 1, 
+        name: newItem.name,
+        category: newItem.category,
+        amount: newItem.quantity, 
+        price: newItem.price,
+        checked: false, 
+      },
+    ]);
+  };
 
   return (
     <View style={styles.container}>
@@ -28,11 +54,11 @@ const shoppingListScreen = () => {
         <Text style={styles.headerText}>Lista de compras</Text>
       </View>
       <View style={styles.body}>
-      <TouchableOpacity style={styles.button}>
+        <TouchableOpacity style={styles.button}>
           <Text style={styles.buttonText}>Agregar</Text>
         </TouchableOpacity>
         <View style={styles.innerView}>
-            <CardItems/>
+          <CardItems />
         </View>
       </View>
       <View style={styles.footer}>
@@ -56,7 +82,7 @@ const styles = StyleSheet.create({
     fontSize: 18,
     fontWeight: "bold",
     color: SPARKLETHEME.negro,
-    marginTop: 35
+    marginTop: 35,
   },
   body: {
     flex: 1,
@@ -73,7 +99,7 @@ const styles = StyleSheet.create({
   buttonText: {
     fontSize: 16,
     fontWeight: "bold",
-    color: SPARKLETHEME.negro
+    color: SPARKLETHEME.negro,
   },
   innerView: {
     width: "90%",
@@ -86,14 +112,14 @@ const styles = StyleSheet.create({
   sparkleImg: {
     width: 125,
     height: 125,
-    marginBottom: 10
+    marginBottom: 10,
   },
   textList: {
     fontSize: 16,
     color: SPARKLETHEME.negro,
     textAlign: "center",
     fontWeight: "bold",
-    marginBottom: 100
+    marginBottom: 100,
   },
   footer: {
     backgroundColor: SPARKLETHEME.negro,
@@ -103,7 +129,7 @@ const styles = StyleSheet.create({
   footerText: {
     fontSize: 16,
     color: SPARKLETHEME.blanco,
-    marginBottom: 10
+    marginBottom: 10,
   },
 });
 
