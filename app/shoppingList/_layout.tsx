@@ -1,6 +1,7 @@
 import React from "react";
 import { View, Image, Text, StyleSheet, TouchableOpacity } from "react-native";
 import { SPARKLETHEME } from "../../styles/colors";
+import CardItems from "../../components/CardItems";
 
 const shoppingListScreen = () => {
   return (
@@ -13,8 +14,7 @@ const shoppingListScreen = () => {
           <Text style={styles.buttonText}>Agregar</Text>
         </TouchableOpacity>
         <View style={styles.innerView}>
-            <Image style={styles.sparkleImg} source={require("../../assets/img/sparkle.png")}/>
-          <Text style={styles.textList}>La lista está vacía</Text>
+            <CardItems/>
         </View>
       </View>
       <View style={styles.footer}>
