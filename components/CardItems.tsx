@@ -4,6 +4,7 @@ import {
   Text,
   TouchableOpacity,
   View,
+  Image
 } from "react-native";
 import React from "react";
 import { v4 as uuidv4 } from "uuid";
@@ -22,8 +23,7 @@ export const CardItems = () => {
   return (
     <ScrollView style={styles.list}>
       <View style={styles.item}>
-        <View style={styles.img}>
-        </View>
+          <Image style={styles.img} source={require("../assets/img/panaderia.jpg")} />
         <View style={styles.space}>
           <Text style={styles.text}>Nombre: </Text>
           <Text style={styles.text}>Precio: €</Text>
@@ -48,6 +48,7 @@ export default CardItems;
 const styles = StyleSheet.create({
   list: {
     paddingBottom: 20,
+    width: 355,
   },
   item: {
     flexDirection: "row",
