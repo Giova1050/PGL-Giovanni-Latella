@@ -1,9 +1,27 @@
-import React from "react";
-import { View, Image, Text, StyleSheet, TouchableOpacity } from "react-native";
+import React, { useState } from "react";
+import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
 import { SPARKLETHEME } from "../../styles/colors";
 import CardItems from "../../components/CardItems";
 
+
 const shoppingListScreen = () => {
+
+  const Categories = ["Panaderia", "Bebidas", "Enlatados", "Carnes", "Pescados", "Frutas/Verduras", "Otros"];
+
+  const [items, setItems] = useState([
+    { id: 1, name: 'Pan', category: 'Panaderia', amount: 2, price: 1, checked: false },
+    { id: 2, name: 'Pepsi', category: 'Bebidas', amount: 1, price: 2, checked: false },
+  ]);
+
+  const [newItem, setNewItem] = useState({
+    name: '',
+    category: '', 
+    amount: '',
+    price: '',
+  });
+
+
+
   return (
     <View style={styles.container}>
       <View style={styles.header}>
