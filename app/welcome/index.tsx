@@ -13,8 +13,11 @@ const WelcomePage = () => {
       <Text style={styles.welcomeText}>
         Bienvenido a mi portfolio Aquí puedes ver la información sobre mi
       </Text>
-      <Link href="/profile" style={styles.button}>
+      <Link href="/profile" style={styles.button1}>
         Entrar al portfolio
+      </Link>
+      <Link href="/shoppingList" style={styles.button2}>
+        Entrar a la lista de compras 
       </Link>
       <Image
         style={styles.sword}
@@ -48,10 +51,20 @@ const styles = StyleSheet.create({
   statusBar: {
     backgroundColor: LIGHTTHEME.plateado,
   },
-  button: {
+  button1: {
     alignSelf: "center",
     textAlign: "center",
     backgroundColor: LIGHTTHEME.verde,
+    padding: 5,
+    width: 150,
+    height: 30,
+    margin: 20,
+  },
+  button2: {
+    fontSize: 11,
+    alignSelf: "center",
+    textAlign: "center",
+    backgroundColor: LIGHTTHEME.rosado,
     padding: 5,
     width: 150,
     height: 30,
