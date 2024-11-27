@@ -13,10 +13,16 @@ import { Item } from "../data/Items";
 export type CardItemProps = {
   product: Item;
   onDelete: (id: string) => void;
+  onEdit: (product: Item) => void;
   onChecked: (id: string) => void;
 };
 
-export const CardItems = ({ product, onDelete, onChecked }: CardItemProps) => {
+export const CardItems = ({
+  product,
+  onDelete,
+  onEdit,
+  onChecked,
+}: CardItemProps) => {
   const getImage = (category: string) => {
     const img: { [key: string]: any } = {
       panaderia: require("../assets/img/panaderia.jpg"),
@@ -31,10 +37,7 @@ export const CardItems = ({ product, onDelete, onChecked }: CardItemProps) => {
 
   return (
     <View style={styles.item}>
-      <Image
-        style={styles.img}
-        source={getImage(product.category)}
-      />
+      <Image style={styles.img} source={getImage(product.category)} />
       <View style={styles.space}>
         <Text style={styles.text}>Nombre:{product.name}</Text>
         <Text style={styles.text}>Precio: {product.price.toFixed(2)}€</Text>
@@ -43,8 +46,17 @@ export const CardItems = ({ product, onDelete, onChecked }: CardItemProps) => {
         <Text style={styles.text}>Categoría: {product.category}</Text>
         <Text style={styles.text}>Cantidad: {product.amount}</Text>
       </View>
-      <TouchableOpacity onPress={() => onChecked(product.id)} style={styles.checkbox}>
-        <Text style={styles.text}>{product.checked ? '✔️': '❌'}</Text>
+      <TouchableOpacity
+        onPress={() => onChecked(product.id)}
+        style={styles.checkbox}
+      >
+        <Text style={styles.text}>{product.checked ? "✔️" : "❌"}</Text>
+      </TouchableOpacity>
+      <TouchableOpacity
+        style={styles.editButton}
+        onPress={() => onEdit(product)}
+      >
+        <Text style={styles.text}>✎</Text>
       </TouchableOpacity>
       <TouchableOpacity
         onPress={() => onDelete(product.id)}
@@ -85,25 +97,33 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   text: {
-    fontSize: 11,
+    fontSize: 9,
     color: "#fff",
   },
   checkbox: {
-    marginHorizontal: 10,
-    padding: 6,
+    marginHorizontal: 8,
+    padding: 4,
     borderWidth: 1,
     borderColor: "#fff",
     borderRadius: 5,
     backgroundColor: SPARKLETHEME.blanco,
   },
   deleteButton: {
-    backgroundColor: "#ff4d4d",
-    paddingHorizontal: 10,
-    paddingVertical: 5,
+    backgroundColor: SPARKLETHEME.rojo,
+    paddingHorizontal: 8,
+    paddingVertical: 3,
     borderRadius: 5,
+    marginRight:20
   },
   deleteText: {
     color: "#fff",
     fontSize: 14,
+  },
+  editButton: {
+    color: SPARKLETHEME.negro,
+    backgroundColor: SPARKLETHEME.negro,
+    paddingHorizontal: 8,
+    paddingVertical: 3,
+    borderRadius: 5,
   },
 });

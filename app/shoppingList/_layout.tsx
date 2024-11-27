@@ -84,7 +84,7 @@ const shoppingListScreen = () => {
             <Text style={styles.headerText}>Lista de compras</Text>
           </View>
           <View style={styles.body}>
-            <TouchableOpacity style={styles.button}>
+            <TouchableOpacity onPress={handleFormModal} style={styles.button}>
               <Text style={styles.buttonText}>Agregar</Text>
             </TouchableOpacity>
             <View style={styles.innerView}>
@@ -94,6 +94,10 @@ const shoppingListScreen = () => {
                 renderItem={({ item }) => (
                   <CardItems
                     product={item}
+                    onEdit={(item2) => {
+                      setNewItem(item2);
+                      handleFormModal();
+                    }}
                     onDelete={handleDeleteItem}
                     onChecked={handleChecked}
                   />
