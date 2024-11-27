@@ -13,6 +13,7 @@ import { Item } from "../../data/Items";
 
 import { v4 as uuidv4 } from "uuid";
 import "react-native-get-random-values";
+import ModalItems from "../../components/ModalItems";
 
 const shoppingListScreen = () => {
   const initialItems = () => [
@@ -35,6 +36,27 @@ const shoppingListScreen = () => {
   ];
 
   const [items, setItems] = useState<Item[]>(initialItems);
+  const [formModalVisible, setFormModalVisible] = useState(false);
+  const [newItem, setNewItem] = useState<Item | null>(null);
+
+  const handleFormModal = () => setFormModalVisible(!formModalVisible);
+
+  const handleNewItem = (product: Item) => {
+    if (newItem) {
+      setItems((element) =>
+        element.map((product) =>
+          product.id === newItem.id ? { ...product, id: newItem.id } : product
+        )
+      );
+    } else {
+      setItems((element) => [
+        ...element,
+        { ...product, id: uuidv4(), checked: false },
+      ]);
+    }
+    setNewItem(null);
+    handleFormModal();
+  };
 
   const totalPrice = items.reduce(
     (acc, product) =>
@@ -56,36 +78,54 @@ const shoppingListScreen = () => {
 
   return (
     <View style={styles.container}>
-      <View style={styles.header}>
-        <Text style={styles.headerText}>Lista de compras</Text>
-      </View>
-      <View style={styles.body}>
-        <TouchableOpacity style={styles.button}>
-          <Text style={styles.buttonText}>Agregar</Text>
-        </TouchableOpacity>
-        <View style={styles.innerView}>
-          <FlatList
-            data={items}
-            keyExtractor={(item) => item.id}
-            renderItem={({ item }) => (
-              <CardItems
-                product={item}
-                onDelete={handleDeleteItem}
-                onChecked={handleChecked}
+      {!formModalVisible && (
+        <>
+          <View style={styles.header}>
+            <Text style={styles.headerText}>Lista de compras</Text>
+          </View>
+          <View style={styles.body}>
+            <TouchableOpacity style={styles.button}>
+              <Text style={styles.buttonText}>Agregar</Text>
+            </TouchableOpacity>
+            <View style={styles.innerView}>
+              <FlatList
+                data={items}
+                keyExtractor={(item) => item.id}
+                renderItem={({ item }) => (
+                  <CardItems
+                    product={item}
+                    onDelete={handleDeleteItem}
+                    onChecked={handleChecked}
+                  />
+                )}
+                ListEmptyComponent={
+                  <Text style={styles.textList}>
+                    <Image
+                      style={styles.sparkleImg}
+                      source={require("../../assets/img/sparkle.png")}
+                    ></Image>
+                    La lista esta Vacia
+                  </Text>
+                }
               />
-            )}
-            ListEmptyComponent={
-              <Text style={styles.textList}><Image style={styles.sparkleImg} source={require("../../assets/img/sparkle.png")}></Image>La lista esta Vacia
-              </Text>
-            }
-          />
-        </View>
-      </View>
-      <View style={styles.footer}>
-        <Text style={styles.footerText}>
-          Precio total: {totalPrice.toFixed(2)}€
-        </Text>
-      </View>
+            </View>
+          </View>
+          <View style={styles.footer}>
+            <Text style={styles.footerText}>
+              Precio total: {totalPrice.toFixed(2)}€
+            </Text>
+          </View>
+        </>
+      )}
+      <ModalItems
+        visible={formModalVisible}
+        newItems={newItem}
+        onNew={handleNewItem}
+        onModal={() => {
+          setNewItem(null);
+          handleFormModal();
+        }}
+      ></ModalItems>
     </View>
   );
 };
@@ -141,7 +181,7 @@ const styles = StyleSheet.create({
     textAlign: "center",
     fontWeight: "bold",
     marginTop: 180,
-    marginInline: 107
+    marginInline: 107,
   },
   footer: {
     backgroundColor: SPARKLETHEME.negro,
