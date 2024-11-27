@@ -76,6 +76,10 @@ const shoppingListScreen = () => {
     );
   };
 
+  const handleDeleteAll = () => {
+    setItems([]);
+  };
+
   return (
     <View style={styles.container}>
       {!formModalVisible && (
@@ -84,9 +88,9 @@ const shoppingListScreen = () => {
             <Text style={styles.headerText}>Lista de compras</Text>
           </View>
           <View style={styles.body}>
-            <TouchableOpacity onPress={handleFormModal} style={styles.button}>
-              <Text style={styles.buttonText}>Agregar</Text>
-            </TouchableOpacity>
+              <TouchableOpacity onPress={handleFormModal} style={styles.button}>
+                <Text style={styles.buttonText}>Agregar</Text>
+              </TouchableOpacity>
             <View style={styles.innerView}>
               <FlatList
                 data={items}
@@ -118,6 +122,16 @@ const shoppingListScreen = () => {
             <Text style={styles.footerText}>
               Precio total: {totalPrice.toFixed(2)}€
             </Text>
+            {items.length > 0 ? (
+                <TouchableOpacity
+                  style={styles.deleteButton}
+                  onPress={handleDeleteAll}
+                >
+                  <Text style={styles.deleteButtonText}>Borrar todo</Text>
+                </TouchableOpacity>
+              ) : (
+                <></>
+              )}
           </View>
         </>
       )}
@@ -157,16 +171,30 @@ const styles = StyleSheet.create({
   },
   button: {
     backgroundColor: SPARKLETHEME.beige,
-    paddingVertical: 10,
-    paddingHorizontal: 20,
+    paddingVertical: 8,
+    paddingHorizontal: 16,
     borderRadius: 10,
-    marginBottom: 20,
+    marginBottom: 15,
+    alignItems: "center",
+  },
+  deleteButton: {
+    backgroundColor: SPARKLETHEME.rojo,
+    paddingVertical: 5,
+    paddingHorizontal: 10,
+    borderRadius: 10,
+    alignItems: "center",
   },
   buttonText: {
     fontSize: 16,
     fontWeight: "bold",
     color: SPARKLETHEME.negro,
   },
+  deleteButtonText: {
+    fontSize: 16,
+    fontWeight: "bold",
+    color: SPARKLETHEME.negro,
+  },
+  buttons: {},
   innerView: {
     width: "90%",
     height: "85%",
