@@ -4,38 +4,54 @@ import {
   Text,
   TouchableOpacity,
   View,
-  Image
+  Image,
 } from "react-native";
 import React from "react";
 import { SPARKLETHEME } from "../styles/colors";
 import { Item } from "../data/Items";
 
-
 export type CardItemProps = {
   product: Item;
   onDelete: (id: string) => void;
-}
+};
 
-export const CardItems = ({product, onDelete}: CardItemProps) => {
+export const CardItems = ({ product, onDelete }: CardItemProps) => {
+  const getImage = (category: string) => {
+    const img: { [key: string]: any } = {
+      panaderia: require("../assets/img/panaderia.jpg"),
+      bebidas: require("../assets/img/bebidas.jpg"),
+      enlatados: require("../assets/img/enlatados.jpg"),
+      carnes: require("../assets/img/carnes.jpg"),
+      pescados: require("../assets/img/pescados.jpg"),
+      "frutas/verduras": require("../assets/img/frutasverduras.jpg"),
+    };
+    return img[category] && require("../assets/img/otros.jpg");
+  };
 
   return (
-      <View style={styles.item}>
-          <Image style={styles.img} source={require("../assets/img/panaderia.jpg")} />
-        <View style={styles.space}>
-          <Text style={styles.text}>Nombre: </Text>
-          <Text style={styles.text}>Precio: €</Text>
-        </View>
-        <View style={styles.space}>
+    <View style={styles.item}>
+      <Image
+        style={styles.img}
+        source={{}}
+      />
+      <View style={styles.space}>
+        <Text style={styles.text}>Nombre: </Text>
+        <Text style={styles.text}>Precio: €</Text>
+      </View>
+      <View style={styles.space}>
         <Text style={styles.text}>Categoría: </Text>
         <Text style={styles.text}>Cantidad: </Text>
-        </View>
-        <TouchableOpacity style={styles.checkbox}>
-          <Text style={styles.text}>✔</Text>
-        </TouchableOpacity>
-        <TouchableOpacity onPress={() => onDelete(product.id)} style={styles.deleteButton}>
-          <Text style={styles.deleteText}>X</Text>
-        </TouchableOpacity>
       </View>
+      <TouchableOpacity style={styles.checkbox}>
+        <Text style={styles.text}>✔</Text>
+      </TouchableOpacity>
+      <TouchableOpacity
+        onPress={() => onDelete(product.id)}
+        style={styles.deleteButton}
+      >
+        <Text style={styles.deleteText}>X</Text>
+      </TouchableOpacity>
+    </View>
   );
 };
 
@@ -53,7 +69,7 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     marginBottom: 10,
     padding: 10,
-    width: 355
+    width: 355,
   },
   img: {
     width: 50,
@@ -77,7 +93,7 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: "#fff",
     borderRadius: 5,
-    backgroundColor: SPARKLETHEME.blanco
+    backgroundColor: SPARKLETHEME.blanco,
   },
   deleteButton: {
     backgroundColor: "#ff4d4d",
