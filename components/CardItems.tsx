@@ -25,22 +25,22 @@ export const CardItems = ({ product, onDelete }: CardItemProps) => {
       pescados: require("../assets/img/pescados.jpg"),
       "frutas/verduras": require("../assets/img/frutasverduras.jpg"),
     };
-    return img[category] && require("../assets/img/otros.jpg");
+    return img[category.toLowerCase()] || require("../assets/img/otros.jpg");
   };
 
   return (
     <View style={styles.item}>
       <Image
         style={styles.img}
-        source={{}}
+        source={getImage(product.category)}
       />
       <View style={styles.space}>
-        <Text style={styles.text}>Nombre: </Text>
-        <Text style={styles.text}>Precio: €</Text>
+        <Text style={styles.text}>Nombre:{product.name}</Text>
+        <Text style={styles.text}>Precio: {product.price.toFixed(2)}€</Text>
       </View>
       <View style={styles.space}>
-        <Text style={styles.text}>Categoría: </Text>
-        <Text style={styles.text}>Cantidad: </Text>
+        <Text style={styles.text}>Categoría: {product.category}</Text>
+        <Text style={styles.text}>Cantidad: {product.amount}</Text>
       </View>
       <TouchableOpacity style={styles.checkbox}>
         <Text style={styles.text}>✔</Text>
@@ -67,7 +67,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     backgroundColor: "#333",
     borderRadius: 10,
-    marginBottom: 10,
+    marginBottom: 1,
     padding: 10,
     width: 355,
   },

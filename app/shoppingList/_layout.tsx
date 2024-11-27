@@ -2,9 +2,10 @@ import React, { useState } from "react";
 import { View, Text, StyleSheet, TouchableOpacity, FlatList } from "react-native";
 import { SPARKLETHEME } from "../../styles/colors";
 import CardItems from "../../components/CardItems";
-import { v4 as uuidv4 } from "uuid";
 import { Item } from "../../data/Items";
-import { CardItemProps } from "../../components/CardItems";
+
+import { v4 as uuidv4 } from "uuid";
+import 'react-native-get-random-values';
 
 const shoppingListScreen = () => {
 
@@ -28,6 +29,8 @@ const shoppingListScreen = () => {
   ];
 
   const [items, setItems] = useState<Item[]>(initialItems);
+
+  
 
   const handleDeleteItem = (id: string) => {
     setItems(items.filter(item => item.id !== id));
