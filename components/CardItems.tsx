@@ -13,9 +13,10 @@ import { Item } from "../data/Items";
 export type CardItemProps = {
   product: Item;
   onDelete: (id: string) => void;
+  onChecked: (id: string) => void;
 };
 
-export const CardItems = ({ product, onDelete }: CardItemProps) => {
+export const CardItems = ({ product, onDelete, onChecked }: CardItemProps) => {
   const getImage = (category: string) => {
     const img: { [key: string]: any } = {
       panaderia: require("../assets/img/panaderia.jpg"),
@@ -42,8 +43,8 @@ export const CardItems = ({ product, onDelete }: CardItemProps) => {
         <Text style={styles.text}>Categoría: {product.category}</Text>
         <Text style={styles.text}>Cantidad: {product.amount}</Text>
       </View>
-      <TouchableOpacity style={styles.checkbox}>
-        <Text style={styles.text}>✔</Text>
+      <TouchableOpacity onPress={() => onChecked(product.id)} style={styles.checkbox}>
+        <Text style={styles.text}>{product.checked ? '✔️': '❌'}</Text>
       </TouchableOpacity>
       <TouchableOpacity
         onPress={() => onDelete(product.id)}

@@ -30,11 +30,23 @@ const shoppingListScreen = () => {
 
   const [items, setItems] = useState<Item[]>(initialItems);
 
-  
+  const totalPrice = items.reduce(
+    (acc, product) => (product.checked ? acc + product.amount * product.price : acc),
+    0
+);
+
 
   const handleDeleteItem = (id: string) => {
     setItems(items.filter(item => item.id !== id));
   };
+
+  const handleChecked = (id: string) => {
+    setItems((element) =>
+        element.map((product) =>
+            product.id === id ? { ...product, checked: !product.checked } : product
+        )
+    );
+};
 
 
   return (
@@ -53,12 +65,13 @@ const shoppingListScreen = () => {
           renderItem={({item}) => (
             <CardItems 
             product={item} 
-            onDelete={handleDeleteItem} />
+            onDelete={handleDeleteItem} 
+            onChecked={handleChecked}/>
           )}/>
         </View>
       </View>
       <View style={styles.footer}>
-        <Text style={styles.footerText}>Precio total: 0€</Text>
+        <Text style={styles.footerText}>Precio total: {totalPrice.toFixed(2)}€</Text>
       </View> 
     </View>
   );
