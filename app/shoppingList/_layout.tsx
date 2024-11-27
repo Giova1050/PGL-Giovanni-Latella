@@ -1,23 +1,16 @@
 import React, { useState } from "react";
-import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
+import { View, Text, StyleSheet, TouchableOpacity, FlatList } from "react-native";
 import { SPARKLETHEME } from "../../styles/colors";
 import CardItems from "../../components/CardItems";
+import { v4 as uuidv4 } from "uuid";
+import { Item } from "../../data/Items";
+import { CardItemProps } from "../../components/CardItems";
 
 const shoppingListScreen = () => {
 
-  const Categories = [
-    "Panaderia",
-    "Bebidas",
-    "Enlatados",
-    "Carnes",
-    "Pescados",
-    "Frutas/Verduras",
-    "Otros",
-  ];
-
-  const [items, setItems] = useState([
+  const initialItems = () => [
     {
-      id: 1,
+      id: uuidv4(),
       name: "Pan",
       category: "Panaderia",
       amount: 2,
@@ -25,28 +18,21 @@ const shoppingListScreen = () => {
       checked: false,
     },
     {
-      id: 2,
-      name: "Pepsi",
+      id: uuidv4(),
+      name: "Agua",
       category: "Bebidas",
       amount: 1,
       price: 2,
       checked: false,
     },
-  ]);
+  ];
 
-  const handleAddItem = (newItem: { name: string; category: string; quantity: number; price: number; }) => {
-    setItems([
-      ...items, 
-      {
-        id: items.length + 1, 
-        name: newItem.name,
-        category: newItem.category,
-        amount: newItem.quantity, 
-        price: newItem.price,
-        checked: false, 
-      },
-    ]);
+  const [items, setItems] = useState<Item[]>(initialItems);
+
+  const handleDeleteItem = (id: string) => {
+    setItems(items.filter(item => item.id !== id));
   };
+
 
   return (
     <View style={styles.container}>
@@ -58,12 +44,19 @@ const shoppingListScreen = () => {
           <Text style={styles.buttonText}>Agregar</Text>
         </TouchableOpacity>
         <View style={styles.innerView}>
-          <CardItems />
+        <FlatList
+          data={items}
+          keyExtractor={(item) => item.id}
+          renderItem={({item}) => (
+            <CardItems 
+            product={item} 
+            onDelete={handleDeleteItem} />
+          )}/>
         </View>
       </View>
       <View style={styles.footer}>
         <Text style={styles.footerText}>Precio total: 0€</Text>
-      </View>
+      </View> 
     </View>
   );
 };

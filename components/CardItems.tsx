@@ -7,13 +7,18 @@ import {
   Image
 } from "react-native";
 import React from "react";
-import { v4 as uuidv4 } from "uuid";
 import { SPARKLETHEME } from "../styles/colors";
+import { Item } from "../data/Items";
 
-export const CardItems = () => {
+
+export type CardItemProps = {
+  product: Item;
+  onDelete: (id: string) => void;
+}
+
+export const CardItems = ({product, onDelete}: CardItemProps) => {
 
   return (
-    <ScrollView style={styles.list}>
       <View style={styles.item}>
           <Image style={styles.img} source={require("../assets/img/panaderia.jpg")} />
         <View style={styles.space}>
@@ -27,11 +32,10 @@ export const CardItems = () => {
         <TouchableOpacity style={styles.checkbox}>
           <Text style={styles.text}>✔</Text>
         </TouchableOpacity>
-        <TouchableOpacity style={styles.deleteButton}>
+        <TouchableOpacity onPress={() => onDelete(product.id)} style={styles.deleteButton}>
           <Text style={styles.deleteText}>X</Text>
         </TouchableOpacity>
       </View>
-    </ScrollView>
   );
 };
 
