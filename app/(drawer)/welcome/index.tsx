@@ -1,6 +1,6 @@
 import { Image, StyleSheet, Text, View } from "react-native";
 import React from "react";
-import { LIGHTTHEME } from "../../styles/colors";
+import { LIGHTTHEME } from "../../../styles/colors";
 import { Link } from "expo-router";
 
 const WelcomePage = () => {

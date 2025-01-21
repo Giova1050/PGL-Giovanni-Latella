@@ -2,7 +2,7 @@ import { StyleSheet, Text, View, Image } from "react-native";
 import React from "react";
 import { Tabs } from "expo-router";
 import Entypo from "@expo/vector-icons/Entypo";
-import { LIGHTTHEME } from "../../styles/colors";
+import { LIGHTTHEME } from "../../../styles/colors";
 
 const ProfileLayout = () => {
   return (

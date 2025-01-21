@@ -7,13 +7,13 @@ import {
   FlatList,
   Image,
 } from "react-native";
-import { SPARKLETHEME } from "../../styles/colors";
-import CardItems from "../../components/CardItems";
-import { Item } from "../../data/Items";
+import { SPARKLETHEME } from "../../../styles/colors";
+import CardItems from "../../../components/CardItems";
+import { Item } from "../../../data/Items";
 
 import { v4 as uuidv4 } from "uuid";
 import "react-native-get-random-values";
-import ModalItems from "../../components/ModalItems";
+import ModalItems from "../../../components/ModalItems";
 
 const shoppingListScreen = () => {
   const initialItems = () => [

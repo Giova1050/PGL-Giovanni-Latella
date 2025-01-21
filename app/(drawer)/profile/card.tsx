@@ -1,8 +1,8 @@
 import { FlatList, StyleSheet, Text, View, Image } from "react-native";
 import React from "react";
-import { scrolls } from "../../data/scrolls";
-import Scroll, { ScrollProps } from "../../components/Card";
-import { LIGHTTHEME } from "../../styles/colors";
+import { scrolls } from "../../../data/scrolls";
+import Scroll, { ScrollProps } from "../../../components/Card";
+import { LIGHTTHEME } from "../../../styles/colors";
 
 const CardPage = () => {
   return (
