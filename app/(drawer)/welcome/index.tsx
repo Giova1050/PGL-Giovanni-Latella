@@ -8,7 +8,7 @@ const WelcomePage = () => {
     <View style={styles.container}>
       <Image
         style={styles.avatar}
-        source={require("../../assets/img/Saberpfp.jpg")}
+        source={require("../../../assets/img/Saberpfp.jpg")}
       />
       <Text style={styles.welcomeText}>
         Bienvenido a mi portfolio Aquí puedes ver la información sobre mi
@@ -21,7 +21,7 @@ const WelcomePage = () => {
       </Link>
       <Image
         style={styles.sword}
-        source={require("../../assets/img/Excalibur.png")}
+        source={require("../../../assets/img/Excalibur.png")}
       />
     </View>
   );

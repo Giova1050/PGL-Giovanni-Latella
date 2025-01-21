@@ -110,7 +110,7 @@ const shoppingListScreen = () => {
                   <Text style={styles.textList}>
                     <Image
                       style={styles.sparkleImg}
-                      source={require("../../assets/img/sparkle.png")}
+                      source={require("../../../assets/img/sparkle.png")}
                     ></Image>
                     La lista esta Vacia
                   </Text>
