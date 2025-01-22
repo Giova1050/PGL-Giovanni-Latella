@@ -1,8 +1,8 @@
 import { Image, StyleSheet, Text, View } from "react-native";
 import React, { useContext } from "react";
-import { DARKTHEME, LIGHTTHEME } from "../../../styles/colors";
+import { DARKTHEME, LIGHTTHEME } from "../../styles/colors";
 import { StatusBar as ExpoStatusBar } from "expo-status-bar";
-import { RenderManagerContext } from "../../../context/RenderManagerContext";
+import { RenderManagerContext } from "../../context/RenderManagerContext";
 
 const WelcomePage = () => {
 
@@ -13,7 +13,7 @@ const WelcomePage = () => {
          <ExpoStatusBar style="auto" />
       <Image
         style={styles.avatar}
-        source={require("../../../assets/img/Saberpfp.jpg")}
+        source={require("../../assets/img/Saberpfp.jpg")}
       />
       <Text style={[styles.welcomeText,
         {backgroundColor: darkMode ? DARKTHEME.rojo : LIGHTTHEME.amarillo},]}>
@@ -21,7 +21,7 @@ const WelcomePage = () => {
       </Text>
       <Image
         style={styles.sword}
-        source={require("../../../assets/img/Excalibur.png")}
+        source={require("../../assets/img/Excalibur.png")}
       />
     </View>
   );

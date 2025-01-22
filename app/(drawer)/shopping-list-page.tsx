@@ -7,15 +7,15 @@ import {
   FlatList,
   Image,
 } from "react-native";
-import { SPARKLETHEME } from "../../../styles/colors";
-import CardItems from "../../../components/CardItems";
-import { Item } from "../../../data/Items";
+import { SPARKLETHEME } from "../../styles/colors";
+import CardItems from "../../components/CardItems";
+import { Item } from "../../data/Items";
 
 import { v4 as uuidv4 } from "uuid";
 import "react-native-get-random-values";
-import ModalItems from "../../../components/ModalItems";
+import ModalItems from "../../components/ModalItems";
 
-const shoppingListScreen = () => {
+const ShoppingListPage = () => {
   const initialItems = () => [
     {
       id: uuidv4(),
@@ -88,9 +88,9 @@ const shoppingListScreen = () => {
             <Text style={styles.headerText}>Lista de compras</Text>
           </View>
           <View style={styles.body}>
-              <TouchableOpacity onPress={handleFormModal} style={styles.button}>
-                <Text style={styles.buttonText}>Agregar</Text>
-              </TouchableOpacity>
+            <TouchableOpacity onPress={handleFormModal} style={styles.button}>
+              <Text style={styles.buttonText}>Agregar</Text>
+            </TouchableOpacity>
             <View style={styles.innerView}>
               <FlatList
                 data={items}
@@ -110,7 +110,7 @@ const shoppingListScreen = () => {
                   <Text style={styles.textList}>
                     <Image
                       style={styles.sparkleImg}
-                      source={require("../../../assets/img/sparkle.png")}
+                      source={require("../../assets/img/sparkle.png")}
                     ></Image>
                     La lista esta Vacia
                   </Text>
@@ -123,15 +123,15 @@ const shoppingListScreen = () => {
               Precio total: {totalPrice.toFixed(2)}€
             </Text>
             {items.length > 0 ? (
-                <TouchableOpacity
-                  style={styles.deleteButton}
-                  onPress={handleDeleteAll}
-                >
-                  <Text style={styles.deleteButtonText}>Borrar todo</Text>
-                </TouchableOpacity>
-              ) : (
-                <></>
-              )}
+              <TouchableOpacity
+                style={styles.deleteButton}
+                onPress={handleDeleteAll}
+              >
+                <Text style={styles.deleteButtonText}>Borrar todo</Text>
+              </TouchableOpacity>
+            ) : (
+              <></>
+            )}
           </View>
         </>
       )}
@@ -227,4 +227,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default shoppingListScreen;
+export default ShoppingListPage;
