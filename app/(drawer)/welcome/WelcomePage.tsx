@@ -1,24 +1,24 @@
 import { Image, StyleSheet, Text, View } from "react-native";
-import React from "react";
-import { LIGHTTHEME } from "../../../styles/colors";
-import { Link } from "expo-router";
+import React, { useContext } from "react";
+import { DARKTHEME, LIGHTTHEME } from "../../../styles/colors";
+import { StatusBar as ExpoStatusBar } from "expo-status-bar";
+import { RenderManagerContext } from "../../../context/RenderManagerContext";
 
 const WelcomePage = () => {
+
+  const { darkMode } = useContext(RenderManagerContext);
+
   return (
-    <View style={styles.container}>
+    <View style={[styles.container, {backgroundColor: darkMode ? DARKTHEME.negro : LIGHTTHEME.azulclaro},]}>
+         <ExpoStatusBar style="auto" />
       <Image
         style={styles.avatar}
         source={require("../../../assets/img/Saberpfp.jpg")}
       />
-      <Text style={styles.welcomeText}>
+      <Text style={[styles.welcomeText,
+        {backgroundColor: darkMode ? DARKTHEME.rojo : LIGHTTHEME.amarillo},]}>
         Bienvenido a mi portfolio Aquí puedes ver la información sobre mi
       </Text>
-      <Link href="/profile" style={styles.button1}>
-        Entrar al portfolio
-      </Link>
-      <Link href="/shoppingList" style={styles.button2}>
-        Entrar a la lista de compras 
-      </Link>
       <Image
         style={styles.sword}
         source={require("../../../assets/img/Excalibur.png")}
@@ -31,8 +31,7 @@ export default WelcomePage;
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    backgroundColor: LIGHTTHEME.azulclaro,
+    flex: 1
   },
   avatar: {
     alignSelf: "center",
@@ -73,7 +72,6 @@ const styles = StyleSheet.create({
   welcomeText: {
     textAlign: "center",
     fontSize: 16,
-    backgroundColor: LIGHTTHEME.amarillo,
     borderRadius: 4,
     borderWidth: 0.5,
     padding: 25,

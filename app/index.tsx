@@ -8,7 +8,7 @@ const Drawer = createDrawerNavigator();
 export default function App() {
   return (
     <>
-      <Redirect href="/welcome" />
+      <Redirect href="/welcome/WelcomePage" />
     </>
   );
 }
