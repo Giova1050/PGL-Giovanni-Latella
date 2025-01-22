@@ -5,8 +5,12 @@ import { Drawer } from "expo-router/drawer";
 
 const DrawerLayout = () => {
   return (
-    <GestureHandlerRootView style={{ flex: 1 }}>
-      <Drawer>
+    <GestureHandlerRootView style={{ flex: 1, marginTop: -60, }}>
+      <Drawer 
+        screenOptions={{
+          drawerStyle: { maxHeight: "100%" },
+        }}
+      >
         <Drawer.Screen
           name="welcome-page"
           options={{
