@@ -6,11 +6,56 @@ import {
   View,
   Image,
 } from "react-native";
-import React from "react";
+import React, { useState } from "react";
 import { LIGHTTHEME } from "../../styles/colors";
 import { router } from "expo-router";
+import loginRegisterService from "../../service/login-register-service";
 
 const LoginPage = () => {
+  const usuarioSeguro =
+    /^[-\w.%+]{1,64}@(?:[A-Z0-9-]{1,63}\.){1,125}[A-Z]{2,63}$/i;
+  const [data, setData] = useState({
+    usuario: "",
+    contra: "",
+  });
+
+  const handleChange = (id: string, value: string) => {
+    setData({
+      ...data,
+      [id]: value,
+    });
+  };
+
+  const handleSubmit = async () => {
+    if (
+      data.usuario.trim() !== "" &&
+      data.usuario !== undefined &&
+      data.contra.trim() !== "" &&
+      data.contra !== undefined
+    ) {
+      if (usuarioSeguro.test(data.usuario)) {
+        console.log(data);
+        try {
+          const login = await loginRegisterService.login({
+            usuario: data.usuario,
+            contra: data.usuario,
+          });
+          if (login) {
+            router.navigate("/(drawer)/welcome-page");
+          } else {
+            window.alert("Usuario o contraseña incorrectas");
+          }
+        } catch (err) {
+          window.alert("Error al iniciar sesión");
+        }
+      } else {
+        window.alert("El email no es válido");
+      }
+    } else {
+      window.alert("Por favor, rellena todos los campos");
+    }
+  };
+
   return (
     <View style={styles.container}>
       <Image
@@ -19,16 +64,23 @@ const LoginPage = () => {
       />
       <Text style={styles.title}>Inicio sesión</Text>
       <View style={styles.inputContainer}>
-        <TextInput style={styles.input} placeholder="Usuario" />
+        <TextInput
+          style={styles.input}
+          onChangeText={(text) => handleChange("usuario", text)}
+          placeholder="Usuario"
+          value={data.usuario}
+        />
       </View>
       <View style={styles.inputContainer}>
         <TextInput
           style={styles.input}
+          onChangeText={(text) => handleChange("contra", text)}
           placeholder="Contraseña"
-          secureTextEntry
+          secureTextEntry={true}
+          value={data.contra}
         />
       </View>
-      <TouchableOpacity style={styles.button}>
+      <TouchableOpacity style={styles.button} onPress={handleSubmit}>
         <Text style={styles.buttonText}>Enviar</Text>
       </TouchableOpacity>
       <TouchableOpacity
