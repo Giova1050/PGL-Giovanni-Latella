@@ -76,7 +76,7 @@ const RegisterPage = () => {
         <TextInput
           style={styles.input}
           placeholder="Contraseña"
-          onChangeText={(text) => handleChange("usuario", text)}
+          onChangeText={(text) => handleChange("contra", text)}
           secureTextEntry={true}
           value={data.contra}
         />
@@ -89,7 +89,7 @@ const RegisterPage = () => {
       >
         <Text style={styles.signUp}>
           Tienes una cuenta?
-          <Text style={styles.signUpLink}>Inicia sesión</Text>
+          <Text style={styles.signUpLink}> Inicia sesión</Text>
         </Text>
       </TouchableOpacity>
     </View>
