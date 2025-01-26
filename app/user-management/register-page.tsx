@@ -6,11 +6,42 @@ import {
   View,
   Image,
 } from "react-native";
-import React from "react";
-import { DARKTHEME, LIGHTTHEME } from "../../styles/colors";
+import React, { useState } from "react";
+import { DARKTHEME } from "../../styles/colors";
 import { router } from "expo-router";
+import loginService from "../../service/login-register-service";
 
-const LoginPage = () => {
+const RegisterPage = () => {
+  const [data, setData] = useState({
+    nombre: "",
+    usuario: "",
+    contra: "",
+  });
+
+  const usuarioSeguro =
+    /^[-\w.%+]{1,64}@(?:[A-Z0-9-]{1,63}\.){1,125}[A-Z]{2,63}$/i;
+  const contraSegura = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}$/;
+
+  const handleSubmit = async () => {
+    if (
+      data.nombre.trim() != "" &&
+      data.nombre !== undefined &&
+      data.usuario.trim() != "" &&
+      data.usuario !== undefined &&
+      data.contra.trim() != "" &&
+      data.contra !== undefined
+    ) {
+      if (usuarioSeguro.test(data.usuario) && usuarioSeguro.test(data.contra)) {
+        await loginService.register({
+          nombre: data.nombre,
+          usuario: data.usuario,
+          contra: data.contra,
+        });
+        router.navigate("/login/login");
+      }
+    }
+  };
+
   return (
     <View style={styles.container}>
       <Image
@@ -19,7 +50,7 @@ const LoginPage = () => {
       />
       <Text style={styles.title}>Registro</Text>
       <View style={styles.inputContainer}>
-        <TextInput style={styles.input} placeholder="Nombre completo"  />
+        <TextInput style={styles.input} placeholder="Nombre completo" />
       </View>
       <View style={styles.inputContainer}>
         <TextInput style={styles.input} placeholder="Usuario" />
@@ -46,7 +77,8 @@ const LoginPage = () => {
   );
 };
 
-export default LoginPage;
+export default RegisterPage;
+
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -65,7 +97,6 @@ const styles = StyleSheet.create({
   input: {
     flex: 1,
     height: "100%",
-    
   },
   inputContainer: {
     flexDirection: "row",
