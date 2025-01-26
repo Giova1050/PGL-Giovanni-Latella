@@ -4,8 +4,6 @@ import { StyleSheet } from "react-native";
 import asyncStorageService from "../service/async-storage";
 
 export default function App() {
-  
-
   useEffect(() => {
     const getSavedUserToken = async () => {
       const token = await asyncStorageService.getData("token");
@@ -18,7 +16,7 @@ export default function App() {
     };
     getSavedUserToken();
   }, []);
-  return
+  return;
 }
 
 const styles = StyleSheet.create({});

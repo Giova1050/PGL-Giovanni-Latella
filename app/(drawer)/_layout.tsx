@@ -1,19 +1,9 @@
 import React from "react";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
 import { Drawer } from "expo-router/drawer";
-import asyncStorageService from "../../service/async-storage";
-import { router } from "expo-router";
 
 const DrawerLayout = () => {
-
-  const handleLogout = async () => {
-    try {
-        await asyncStorageService.removeData("token");
-        router.navigate("/login/LoginPage");
-    } catch (error) {
-        console.error('Error al cerrar sesión:', error);
-    }
-};
+  
 
   return (
     <GestureHandlerRootView style={{ flex: 1 }}>
@@ -40,6 +30,13 @@ const DrawerLayout = () => {
           options={{
             drawerLabel: "Lista de compra",
             title: "Lista de compra",
+          }}
+        />
+        <Drawer.Screen
+          name="logout"
+          options={{
+            drawerLabel: "Salir",
+            title: "Salir",
           }}
         />
       </Drawer>
