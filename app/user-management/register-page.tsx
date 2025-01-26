@@ -44,7 +44,7 @@ const RegisterPage = () => {
           usuario: data.usuario,
           contra: data.contra,
         });
-        router.navigate("/login/login");
+        router.navigate("/user-management/login-page.tsx");
       }
     }
   };
