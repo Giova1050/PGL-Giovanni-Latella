@@ -1,7 +1,6 @@
-import React, { useEffect } from "react";
-import { Redirect, router } from "expo-router";
-import { StyleSheet, Text } from "react-native";
-import { createDrawerNavigator } from "@react-navigation/drawer";
+import { useEffect } from "react";
+import { router } from "expo-router";
+import { StyleSheet } from "react-native";
 
 export default function App() {
   /* const USER_TOKEN_KEY = asyncStorageService.KEYS.userToken; */

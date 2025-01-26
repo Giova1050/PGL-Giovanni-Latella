@@ -8,11 +8,15 @@ import {
 } from "react-native";
 import React from "react";
 import { LIGHTTHEME } from "../../styles/colors";
+import { router } from "expo-router";
 
 const LoginPage = () => {
   return (
     <View style={styles.container}>
-      <Image source={require("../../assets/img/LoginSaber.jpg")} style={styles.avatar} />
+      <Image
+        source={require("../../assets/img/LoginSaber.jpg")}
+        style={styles.avatar}
+      />
       <Text style={styles.title}>Inicio sesión</Text>
       <View style={styles.inputContainer}>
         <TextInput style={styles.input} placeholder="Usuario" />
@@ -27,7 +31,9 @@ const LoginPage = () => {
       <TouchableOpacity style={styles.button}>
         <Text style={styles.buttonText}>Enviar</Text>
       </TouchableOpacity>
-      <TouchableOpacity>
+      <TouchableOpacity
+        onPress={() => router.navigate("/user-management/register-page")}
+      >
         <Text style={styles.signUp}>
           No tienes cuenta? <Text style={styles.signUpLink}>Registrate</Text>
         </Text>
@@ -47,7 +53,8 @@ const styles = StyleSheet.create({
   },
   title: {
     fontSize: 32,
-    marginBottom: 40,
+    marginTop: 15,
+    marginBottom: 15,
     fontWeight: "bold",
     color: "black",
   },
