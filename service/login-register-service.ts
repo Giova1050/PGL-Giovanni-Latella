@@ -4,7 +4,7 @@ import asyncStorageService from "./async-storage";
 const login = async (form: { usuario: string; contra: string }) => {
   try {
     const response = await axios.post(
-      "http://192.168.68.100:8082/auth/login/",
+      "http://192.168.68.100:5000/auth/login/",
       form
     );
     if (response.status === 200 || response.status === 201) {
@@ -24,13 +24,15 @@ const register = async (form: {
   contra: string;
 }) => {
   axios
-    .post("http://192.168.68.8082/auth/register/", form)
+    .post("http://192.168.68.100:5000/auth/register/", form)
     .then((response) => {
       console.log(response);
       console.log(response.data);
     })
     .catch((error) => {
-      console.error("Error sending data: ", error);
+        if (error.response?.status === 400) {
+            console.log('Solicitud incorrecta. Por favor, verifica los datos enviados.');
+          }
     });
 };
 
