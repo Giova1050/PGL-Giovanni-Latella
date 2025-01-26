@@ -22,6 +22,13 @@ const RegisterPage = () => {
     /^[-\w.%+]{1,64}@(?:[A-Z0-9-]{1,63}\.){1,125}[A-Z]{2,63}$/i;
   const contraSegura = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}$/;
 
+  const handleChange = (id: string, value: string) => {
+    setData({
+      ...data,
+      [id]: value,
+    });
+  };
+
   const handleSubmit = async () => {
     if (
       data.nombre.trim() != "" &&
@@ -31,7 +38,7 @@ const RegisterPage = () => {
       data.contra.trim() != "" &&
       data.contra !== undefined
     ) {
-      if (usuarioSeguro.test(data.usuario) && usuarioSeguro.test(data.contra)) {
+      if (usuarioSeguro.test(data.usuario) && contraSegura.test(data.contra)) {
         await loginService.register({
           nombre: data.nombre,
           usuario: data.usuario,
@@ -50,26 +57,38 @@ const RegisterPage = () => {
       />
       <Text style={styles.title}>Registro</Text>
       <View style={styles.inputContainer}>
-        <TextInput style={styles.input} placeholder="Nombre completo" />
+        <TextInput
+          style={styles.input}
+          onChangeText={(text) => handleChange("nombre", text)}
+          placeholder="Nombre completo"
+          value={data.nombre}
+        />
       </View>
       <View style={styles.inputContainer}>
-        <TextInput style={styles.input} placeholder="Usuario" />
+        <TextInput
+          style={styles.input}
+          onChangeText={(text) => handleChange("usuario", text)}
+          placeholder="Usuario"
+          value={data.usuario}
+        />
       </View>
       <View style={styles.inputContainer}>
         <TextInput
           style={styles.input}
           placeholder="Contraseña"
-          secureTextEntry
+          onChangeText={(text) => handleChange("usuario", text)}
+          secureTextEntry={true}
+          value={data.contra}
         />
       </View>
-      <TouchableOpacity style={styles.button}>
+      <TouchableOpacity style={styles.button} onPress={handleSubmit}>
         <Text style={styles.buttonText}>Enviar</Text>
       </TouchableOpacity>
       <TouchableOpacity
         onPress={() => router.navigate("/user-management/login-page")}
       >
         <Text style={styles.signUp}>
-          Tienes una cuenta?{" "}
+          Tienes una cuenta?
           <Text style={styles.signUpLink}>Inicia sesión</Text>
         </Text>
       </TouchableOpacity>
