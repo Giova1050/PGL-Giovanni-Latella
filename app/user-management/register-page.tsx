@@ -13,9 +13,9 @@ import loginService from "../../service/login-register-service";
 
 const RegisterPage = () => {
   const [data, setData] = useState({
-    nombre: "",
-    usuario: "",
-    contra: "",
+    fullname: "",
+    email: "",
+    password: "",
   });
 
   const usuarioSeguro =
@@ -31,20 +31,21 @@ const RegisterPage = () => {
 
   const handleSubmit = async () => {
     if (
-      data.nombre.trim() != "" &&
-      data.nombre !== undefined &&
-      data.usuario.trim() != "" &&
-      data.usuario !== undefined &&
-      data.contra.trim() != "" &&
-      data.contra !== undefined
+      data.fullname.trim() != "" &&
+      data.fullname !== undefined &&
+      data.email.trim() != "" &&
+      data.email !== undefined &&
+      data.password.trim() != "" &&
+      data.password !== undefined
     ) {
-      if (usuarioSeguro.test(data.usuario) && contraSegura.test(data.contra)) {
+      if (usuarioSeguro.test(data.email) && contraSegura.test(data.password)) {
         await loginService.register({
-          nombre: data.nombre,
-          usuario: data.usuario,
-          contra: data.contra,
+          fullname: data.fullname,
+          email: data.email,
+          password: data.password,
         });
-        router.navigate("/login-page.tsx");
+        console.log("Navegando al login...");
+        router.navigate("./login-page");
       } else {
         window.alert("Datos incorrectos");
       }
@@ -61,26 +62,26 @@ const RegisterPage = () => {
       <View style={styles.inputContainer}>
         <TextInput
           style={styles.input}
-          onChangeText={(text) => handleChange("nombre", text)}
+          onChangeText={(text) => handleChange("fullname", text)}
           placeholder="Nombre completo"
-          value={data.nombre}
+          value={data.fullname}
         />
       </View>
       <View style={styles.inputContainer}>
         <TextInput
           style={styles.input}
-          onChangeText={(text) => handleChange("usuario", text)}
+          onChangeText={(text) => handleChange("email", text)}
           placeholder="Usuario"
-          value={data.usuario}
+          value={data.email}
         />
       </View>
       <View style={styles.inputContainer}>
         <TextInput
           style={styles.input}
           placeholder="Contraseña"
-          onChangeText={(text) => handleChange("contra", text)}
+          onChangeText={(text) => handleChange("password", text)}
           secureTextEntry={true}
-          value={data.contra}
+          value={data.password}
         />
       </View>
       <TouchableOpacity style={styles.button} onPress={handleSubmit}>
