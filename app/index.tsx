@@ -6,12 +6,12 @@ import asyncStorageService from "../service/async-storage";
 export default function App() {
   useEffect(() => {
     const getSavedUserToken = async () => {
-      const token = await asyncStorageService.getData("token");
+      const token = await asyncStorageService.getData();
       const isTokenValid = true;
       if (token != null && isTokenValid) {
-        router.navigate("/(drawer)/welcome-page");
-      } else {
         router.navigate("/user-management/login-page");
+      } else {
+        router.navigate("/(drawer)/welcome-page");
       }
     };
     getSavedUserToken();
