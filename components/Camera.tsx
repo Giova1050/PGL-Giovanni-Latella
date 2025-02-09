@@ -6,8 +6,7 @@ import Ionicons from "@expo/vector-icons/Ionicons";
 
 import { cameraService } from "../service/camera-service";
 import { LIGHTTHEME } from "../styles/colors";
-const screenHeigth = Dimensions.get("screen").height;
-const screenWidth = Dimensions.get("window").width;
+
 
 export type CameraProps = {
   closeCamera: () => void;
@@ -18,15 +17,6 @@ export type CameraProps = {
 const Camera = ({ userToken, closeCamera, setLoading }: CameraProps) => {
   const cameraRef = useRef<CameraView>(null);
   const [permission, requestCameraPermission] = useCameraPermissions();
-  const [facing, setFacing] = useState<CameraType>("back");
-  const [flash, setFlash] = useState<boolean>(false);
-
-  const toggleFacing = () =>
-    setFacing((face: string) => (face === "back" ? "front" : "back"));
-
-  const toggleFlash = () => {
-    setFlash((flash) => !flash);
-  };
 
   const takePicture = async () => {
     try {
@@ -60,8 +50,6 @@ const Camera = ({ userToken, closeCamera, setLoading }: CameraProps) => {
     <View style={styles.container}>
       <CameraView
         style={styles.camera}
-        enableTorch={flash}
-        facing={facing}
         mode="picture"
         ref={cameraRef}
         onCameraReady={() => {
