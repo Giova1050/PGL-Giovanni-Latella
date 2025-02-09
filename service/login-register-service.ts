@@ -1,16 +1,16 @@
 import axios from "axios";
 import asyncStorageService from "./async-storage";
 
-const login = async (form: { usuario: string; contra: string }) => {
+const login = async (email: string, password: string) => {
   try {
     const response = await axios.post(
       "http://192.168.68.100:5000/auth/login/",
-      form
+      { email, password }
     );
     if (response.status === 200 || response.status === 201) {
       await asyncStorageService.storeData("token", response.data.object.token);
       console.log(response.data.object.token);
-      console.log(form);
+      console.log({ email, password });
       return true;
     }
   } catch (error) {
@@ -19,9 +19,9 @@ const login = async (form: { usuario: string; contra: string }) => {
 };
 
 const register = async (form: {
-  nombre: string;
-  usuario: string;
-  contra: string;
+  fullname: string;
+  email: string;
+  password: string;
 }) => {
   axios
     .post("http://192.168.68.100:5000/auth/register/", form)
@@ -30,9 +30,11 @@ const register = async (form: {
       console.log(response.data);
     })
     .catch((error) => {
-        if (error.response?.status === 400) {
-            console.log('Solicitud incorrecta. Por favor, verifica los datos enviados.');
-          }
+      if (error.response?.status === 400) {
+        console.log(
+          "Solicitud incorrecta. Por favor, verifica los datos enviados."
+        );
+      }
     });
 };
 

@@ -3,8 +3,6 @@ import { GestureHandlerRootView } from "react-native-gesture-handler";
 import { Drawer } from "expo-router/drawer";
 
 const DrawerLayout = () => {
-  
-
   return (
     <GestureHandlerRootView style={{ flex: 1 }}>
       <Drawer
@@ -30,6 +28,13 @@ const DrawerLayout = () => {
           options={{
             drawerLabel: "Lista de compra",
             title: "Lista de compra",
+          }}
+        />
+        <Drawer.Screen
+          name="camera-page"
+          options={{
+            drawerLabel: "Camara",
+            title: "Camara",
           }}
         />
         <Drawer.Screen

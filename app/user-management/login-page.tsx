@@ -15,8 +15,8 @@ const LoginPage = () => {
   const usuarioSeguro =
     /^[-\w.%+]{1,64}@(?:[A-Z0-9-]{1,63}\.){1,125}[A-Z]{2,63}$/i;
   const [data, setData] = useState({
-    usuario: "",
-    contra: "",
+    email: "",
+    password: "",
   });
 
   const handleChange = (id: string, value: string) => {
@@ -28,18 +28,15 @@ const LoginPage = () => {
 
   const handleSubmit = async () => {
     if (
-      data.usuario.trim() !== "" &&
-      data.usuario !== undefined &&
-      data.contra.trim() !== "" &&
-      data.contra !== undefined
+      data.email.trim() !== "" &&
+      data.email !== undefined &&
+      data.password.trim() !== "" &&
+      data.password !== undefined
     ) {
-      if (usuarioSeguro.test(data.usuario)) {
+      if (usuarioSeguro.test(data.email)) {
         console.log(data);
         try {
-          const login = await loginRegisterService.login({
-            usuario: data.usuario,
-            contra: data.usuario,
-          });
+          const login = await loginRegisterService.login(data.email,data.password);
           if (login) {
             router.navigate("/(drawer)/welcome-page");
           } else {
@@ -66,18 +63,18 @@ const LoginPage = () => {
       <View style={styles.inputContainer}>
         <TextInput
           style={styles.input}
-          onChangeText={(text) => handleChange("usuario", text)}
+          onChangeText={(text) => handleChange("email", text)}
           placeholder="Usuario"
-          value={data.usuario}
+          value={data.email}
         />
       </View>
       <View style={styles.inputContainer}>
         <TextInput
           style={styles.input}
-          onChangeText={(text) => handleChange("contra", text)}
+          onChangeText={(text) => handleChange("password", text)}
           placeholder="Contraseña"
           secureTextEntry={true}
-          value={data.contra}
+          value={data.password}
         />
       </View>
       <TouchableOpacity style={styles.button} onPress={handleSubmit}>

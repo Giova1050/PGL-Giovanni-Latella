@@ -1,4 +1,5 @@
 import AsyncStorage from "@react-native-async-storage/async-storage";
+const KEY = "@user";
 
 const storeData = async (key: string, value: any) => {
   try {
@@ -9,12 +10,12 @@ const storeData = async (key: string, value: any) => {
   }
 };
 
-const getData = async (key: string) => {
+const getData = async () => {
   try {
-    const jsonValue = await AsyncStorage.getItem(key);
-    return jsonValue != null ? JSON.parse(jsonValue) : null;
-  } catch (e) {
-    console.error(e);
+    const value = await AsyncStorage.getItem(KEY);
+    return value;
+  } catch (error) {
+    console.error("Error al obtener el valor de la clave:", error);
   }
 };
 
