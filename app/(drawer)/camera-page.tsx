@@ -1,6 +1,6 @@
 import { StyleSheet, Text, TouchableOpacity, View, Image } from "react-native";
 import React, { useCallback, useState } from "react";
-import asyncStorageService from "../../service/async-storage";
+import {asyncStorageService} from "../../service/async-storage";
 import { LIGHTTHEME } from "../../styles/colors";
 import Camera from "../../components/Camera";
 import { useFocusEffect } from "expo-router";
@@ -16,7 +16,7 @@ const CameraPage = () => {
   const [loading, setLoading] = useState(true);
 
   const getImages = async () => {
-    const token = await asyncStorageService.getData();
+    const token = await asyncStorageService.getItem();
     const camImages = await cameraService.getAllImages(token!);
 
     setUserToken(token!);

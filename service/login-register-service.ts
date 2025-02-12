@@ -1,5 +1,5 @@
 import axios, { AxiosError } from "axios";
-import asyncStorageService from "./async-storage";
+import {asyncStorageService} from "./async-storage";
 import Toast from "react-native-toast-message";
 
 const login = async (email: string, pswd: string) => {
@@ -73,21 +73,18 @@ const register = async (fullName: string, email: string, pswd: string) => {
       Toast.show({
         type: "error",
         text1: "Error",
-        text2: "El usuario ya existe, revise los datos 😢",
       });
       status = error.status;
     } else if (error instanceof AxiosError && error.status === 400) {
       Toast.show({
         type: "error",
         text1: "Error",
-        text2: "Hubo un error en el registro, revise los datos 😢",
       });
       status = error.status;
     } else {
       Toast.show({
         type: "error",
         text1: "Error",
-        text2: "Error del servidor 💀",
       });
     }
   }

@@ -1,5 +1,13 @@
 import AsyncStorage from "@react-native-async-storage/async-storage";
 const KEY = "@user";
+const getItem = async () => {
+  try {
+    const value = await AsyncStorage.getItem(KEY);
+    return value;
+  } catch (error) {
+    console.error("Error al obtener el valor de la clave:", error);
+  }
+};
 
 const storeData = async (value: string) => {
   try {
@@ -10,24 +18,17 @@ const storeData = async (value: string) => {
   }
 };
 
-const getData = async () => {
+const removeItem = async () => {
   try {
-    const value = await AsyncStorage.getItem(KEY);
-    return value;
+    await AsyncStorage.removeItem(KEY);
+    console.log("Valor eliminado correctamente");
   } catch (error) {
-    console.error("Error al obtener el valor de la clave:", error);
+    console.error("Error al eliminar el valor de la clave:", error);
   }
 };
 
-const removeData = async (key: string) => {
-  try {
-    await AsyncStorage.removeItem(key);
-    console.log(`Key "${key}" removed successfully.`);
-  } catch (error) {
-    console.error(`Failed to remove key "${key}":`, error);
-  }
+export const asyncStorageService = {
+  getItem,
+  storeData,
+  removeItem,
 };
-
-const asyncStorageService = { storeData, getData, removeData };
-
-export default asyncStorageService;

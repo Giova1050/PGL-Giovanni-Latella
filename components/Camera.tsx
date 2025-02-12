@@ -1,8 +1,7 @@
-import { Dimensions, Pressable, StyleSheet, Text, View } from "react-native";
-import React, { useContext, useRef, useState } from "react";
-import { CameraType, CameraView, useCameraPermissions } from "expo-camera";
+import { Pressable, StyleSheet, Text, View } from "react-native";
+import React, { useRef } from "react";
+import { CameraView, useCameraPermissions } from "expo-camera";
 import Entypo from "@expo/vector-icons/Entypo";
-import Ionicons from "@expo/vector-icons/Ionicons";
 
 import { cameraService } from "../service/camera-service";
 import { LIGHTTHEME } from "../styles/colors";
