@@ -9,9 +9,9 @@ export default function App() {
       const token = await asyncStorageService.getData();
       const isTokenValid = true;
       if (token != null && isTokenValid) {
-        router.navigate("/user-management/login-page");
-      } else {
         router.navigate("/(drawer)/welcome-page");
+      } else {
+        router.navigate("/user-management/login-page");
       }
     };
     getSavedUserToken();

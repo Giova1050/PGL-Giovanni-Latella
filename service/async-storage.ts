@@ -1,12 +1,12 @@
 import AsyncStorage from "@react-native-async-storage/async-storage";
 const KEY = "@user";
 
-const storeData = async (key: string, value: any) => {
+const storeData = async (value: string) => {
   try {
-    const jsonValue = JSON.stringify(value);
-    await AsyncStorage.setItem(key, jsonValue);
+    await AsyncStorage.setItem(KEY, value);
+    console.log("Valor guardado correctamente", value);
   } catch (e) {
-    console.error(e);
+    console.error("Error al guardar el valor:", e);
   }
 };
 
